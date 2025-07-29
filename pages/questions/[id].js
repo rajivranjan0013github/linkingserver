@@ -8,18 +8,17 @@ export default function RedirectQuestion() {
   useEffect(() => {
     if (!id) return;
 
-    const fallback = `https://play.google.com/store/apps/details?id=com.question2&referrer=question=${id}`;
-    const intent = `intent://Questions/${id}#Intent;scheme=https;package=com.question2;S.browser_fallback_url=${encodeURIComponent(fallback)};end`;
+    const deepLink = `https://com.question2/Questions/${id}`;
+    const playStore = `https://play.google.com/store/apps/details?id=com.question2&referrer=question=${id}`;
 
-    // Add delay fallback in case intent fails silently
-    const timer = setTimeout(() => {
-      window.location.href = fallback;
-    }, 2500); // enough time to trigger intent
+    const timeout = setTimeout(() => {
+      window.location.href = playStore;
+    }, 1500); // Wait for app open; if fails, redirect
 
-    window.location.replace(intent); // triggers app open
+    window.location.href = deepLink;
 
-    return () => clearTimeout(timer);
+    return () => clearTimeout(timeout);
   }, [id]);
 
-  return <p>Redirecting to app...</p>;
+  return <p>Redirecting to app or Play Store...</p>;
 }
