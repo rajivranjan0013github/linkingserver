@@ -9,7 +9,7 @@ export default function RedirectQuestion() {
   useEffect(() => {
     if (id) {
       const fallbackUrl = encodeURIComponent(`https://play.google.com/store/apps/details?id=com.question2&referrer=question=${id}`);
-      const intentUrl = `intent://question/${id}#Intent;scheme=https;package=com.question2;S.browser_fallback_url=${fallbackUrl};end`;
+      const intentUrl = `intent://Questions/${id}#Intent;scheme=https;package=com.question2;S.browser_fallback_url=${fallbackUrl};end`;
 
       window.location.href = intentUrl;
     }
