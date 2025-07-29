@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 export default function RedirectQuestion() {
   const router = useRouter();
-  const { id } = router.query;
+  const { id } = router.query; 
 
   useEffect(() => {
     if (id) {
