@@ -31,7 +31,7 @@ export default function RedirectQuestion() {
   return (
     <div style={{ padding: 20, textAlign: 'center' }}>
       <h2>Redirecting...</h2>
-      <p>Trying to open the app. If not installed, you'll be redirected to Play Store shortly.</p>
+      <p>Trying to open the app.</p>
     </div>
   );
 }
