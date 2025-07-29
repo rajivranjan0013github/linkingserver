@@ -1,26 +1,33 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 
 export default function RedirectQuestion() {
   const router = useRouter();
   const { id } = router.query;
+  const anchorRef = useRef(null);
 
   useEffect(() => {
-    if (id) {
-      const fallbackUrl = encodeURIComponent(`https://play.google.com/store/apps/details?id=com.question2&referrer=question=${id}`);
-      const intentUrl = `intent://Questions/${id}#Intent;scheme=https;package=com.question2;S.browser_fallback_url=${fallbackUrl};end`;
+    if (!id) return;
 
-      const timeout = setTimeout(() => {
-        // Fallback in case intent doesn't work
-        window.location.href = `https://play.google.com/store/apps/details?id=com.question2&referrer=question=${id}`;
-      }, 2000);
+    const fallbackUrl = `https://play.google.com/store/apps/details?id=com.question2&referrer=question=${id}`;
+    const intentUrl = `intent://Questions/${id}#Intent;scheme=https;package=com.question2;S.browser_fallback_url=${encodeURIComponent(fallbackUrl)};end`;
 
-      // Try to open the app
-      window.location.href = intentUrl;
+    // Use <a> to trigger intent instead of window.location.href
+    anchorRef.current.href = intentUrl;
+    anchorRef.current.click();
 
-      return () => clearTimeout(timeout);
-    }
+    // Fallback after timeout
+    const timeout = setTimeout(() => {
+      window.location.href = fallbackUrl;
+    }, 2000);
+
+    return () => clearTimeout(timeout);
   }, [id]);
 
-  return <p>Redirecting to app or Play Store...</p>;
+  return (
+    <>
+      <p>Redirecting to app or Play Store...</p>
+      <a ref={anchorRef} style={{ display: 'none' }} />
+    </>
+  );
 }
