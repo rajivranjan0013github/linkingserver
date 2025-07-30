@@ -12,7 +12,8 @@ export default function RedirectQuestion() {
 
       const timeout = setTimeout(() => {
         // Fallback in case intent doesn't work
-        window.location.href = `https://play.google.com/store/apps/details?id=com.question2&referrer=question=${id}`;
+        // window.location.href = `https://play.google.com/store/apps/details?id=com.question2&referrer=question=${id}`;
+        window.location.href = `https://play.google.com/store/apps/details?id=com.indocipta.piano&pcampaignid=web_share`
       }, 2000);
 
       // Try to open the app
