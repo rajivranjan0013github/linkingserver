@@ -3,9 +3,9 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "com.topicwise.app",
+      "package_name": "com.topicwise.apps",
       "sha256_cert_fingerprints":
-        ["34:F2:95:AB:62:C8:53:A3:EC:D3:5E:79:00:C8:4E:F8:29:E5:89:E3:F9:48:B2:E1:BE:8B:D8:34:6C:9C:E7:BF","FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C"]
+        ["FB:33:03:4C:0C:04:B8:D2:DD:C0:72:28:42:F1:F3:F8:7E:C1:CF:85:66:09:DF:82:FD:AD:F1:83:A5:70:F5:A6"]
     }
   }
 ]
