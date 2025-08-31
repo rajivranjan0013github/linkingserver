@@ -5,23 +5,7 @@ export default function RedirectQuestion() {
   const router = useRouter();
   const { id } = router.query;
 
-  useEffect(() => {
-    if (id) {
-      const fallbackUrl = encodeURIComponent(`https://play.google.com/store/apps/details?id=com.topicwise.apps&referrer=question=${id}`);
-      const intentUrl = `intent://questions/${id}#Intent;scheme=https;package=com.topicwise.apps;S.browser_fallback_url=${fallbackUrl};end`;
-
-      const timeout = setTimeout(() => {
-        // Fallback in case intent doesn't work
-        // window.location.href = `https://play.google.com/store/apps/details?id=com.question2&referrer=question=${id}`;
-        window.location.href = `https://play.google.com/store/apps/details?id=com.topicwise.apps&pcampaignid=web_share`
-      }, 2000);
-
-      // Try to open the app
-      window.location.href = intentUrl;
-
-      return () => clearTimeout(timeout);
-    }
-  }, [id]);
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black flex items-center justify-center p-4">
